@@ -5,6 +5,7 @@ author: "<img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
+    css: ["default", "default-fonts", "css/custom-shiny.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -20,67 +21,43 @@ class: middle, center
 
 <img src="img/cursor.png">
 
----
-class: middle, center
+## [curso-r.com](http://curso-r.com)
 
-<img src="img/professores.png">
+## Athos Petri Damiani 
 
----
-class: middle, center
-
-## Neste curso, vamos aprender
-
-### 1. Dashboards estáticos
-
-### 2. Dashboards dinâmicos
-
---
-
-<img src="img/rstudio.png">
 
 ---
-class: middle, center, inverse
+class: middle
 
-## Por que dashboards?
+## In this course, we are going to learn
 
----
-class: middle, center
+### 1. How to build a Shiny App
 
-<img src="img/ciclo.png">
+### 2. Reactives
 
----
-class: middle, center, inverse
+### 3. Shinydashboard UI
 
-## dashboard estático vs dashboard dinâmico
-
----
-class: middle, center
-
-<img src="img/como-funciona.png">
-
----
-class: middle, center
-
-# O que vamos ver?
-
-### rmarkdown
-### knitr
-### flexdashboard
-### shiny
-### shinydashboard
-
-<img src="img/hex-rmarkdown.png" style="position: fixed; top: 150px; left: 75px; z-index: 1;" width="15%">
-
-<img src="img/hex-knitr.png" style="position: fixed; top: 350px; left: 75px; z-index: 1;" width="15%">
+### 4. Deploy with Shinyapps.io
 
 <img src="img/hex-shiny.png" style="position: fixed; top: 250px; right: 75px; z-index: 1;" width="15%">
 
 ---
-class: middle, center
+class: middle
 
-<img src="img/rmarkdown.png" width = "50%">
+## Requirements
 
-<img src="img/hex-rmarkdown.png" style="position: fixed; top: 50px; left: 75px; z-index: 1;" width="9%">
+### - R v3.5.0 or superior
+
+### - RStudio v1.2.0 or superior
+
+### - Previous programming experience with R
+
+---
+class: middle
+
+## Dynamic Dashboards
+
+<img src="img/como-funciona.png">
 
 ---
 class: middle, center
@@ -91,10 +68,39 @@ class: middle, center
 
 <img src="img/shiny2.png" width = "50%">
 
----
-class: middle, center, inverse
 
-## Vamos ao R!
+---
+
+## Hello World
+
+```{r, echo=TRUE, eval=FALSE}
+library(shiny)
+
+ui <- fluidPage("Hello World!")
+
+server <- function(input, output, session) {
+  
+}
+
+shinyApp(ui, server)
+```
+
+---
+class: middle, center
+
+## To R!
 
 <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width = "300" height = "300">
 
+---
+class: middle
+
+## Inputs and Outputs
+
+
+
+
+---
+class: middle
+
+## To R!

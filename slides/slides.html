@@ -7,13 +7,14 @@
     <meta name="date" content="2019-11-16" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom-shiny.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
 # My First Dashboard With Shiny
-## <a href="bit.ly/intro-r-edp">bit.ly/intro-r-edp</a>
+## <a href="bit.ly/my-1st-shiny">bit.ly/my-1st-shiny</a>
 ### <img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>
 ### 2019-11-16
 
@@ -26,67 +27,43 @@ class: middle, center
 
 &lt;img src="img/cursor.png"&gt;
 
----
-class: middle, center
+## [curso-r.com](http://curso-r.com)
 
-&lt;img src="img/professores.png"&gt;
+## Athos Petri Damiani 
 
----
-class: middle, center
-
-## Neste curso, vamos aprender
-
-### 1. Dashboards estáticos
-
-### 2. Dashboards dinâmicos
-
---
-
-&lt;img src="img/rstudio.png"&gt;
 
 ---
-class: middle, center, inverse
+class: middle
 
-## Por que dashboards?
+## In this course, we are going to learn
 
----
-class: middle, center
+### 1. How to build a Shiny App
 
-&lt;img src="img/ciclo.png"&gt;
+### 2. Reactives
 
----
-class: middle, center, inverse
+### 3. Shinydashboard UI
 
-## dashboard estático vs dashboard dinâmico
-
----
-class: middle, center
-
-&lt;img src="img/como-funciona.png"&gt;
-
----
-class: middle, center
-
-# O que vamos ver?
-
-### rmarkdown
-### knitr
-### flexdashboard
-### shiny
-### shinydashboard
-
-&lt;img src="img/hex-rmarkdown.png" style="position: fixed; top: 150px; left: 75px; z-index: 1;" width="15%"&gt;
-
-&lt;img src="img/hex-knitr.png" style="position: fixed; top: 350px; left: 75px; z-index: 1;" width="15%"&gt;
+### 4. Deploy with Shinyapps.io
 
 &lt;img src="img/hex-shiny.png" style="position: fixed; top: 250px; right: 75px; z-index: 1;" width="15%"&gt;
 
 ---
-class: middle, center
+class: middle
 
-&lt;img src="img/rmarkdown.png" width = "50%"&gt;
+## Requirements
 
-&lt;img src="img/hex-rmarkdown.png" style="position: fixed; top: 50px; left: 75px; z-index: 1;" width="9%"&gt;
+### - R v3.5.0 or superior
+
+### - RStudio v1.2.0 or superior
+
+### - Previous programming experience with R
+
+---
+class: middle
+
+## Dynamic Dashboards
+
+&lt;img src="img/como-funciona.png"&gt;
 
 ---
 class: middle, center
@@ -97,10 +74,28 @@ class: middle, center
 
 &lt;img src="img/shiny2.png" width = "50%"&gt;
 
+
+---
+
+## Hello World
+
+
+```r
+library(shiny)
+
+ui &lt;- fluidPage("Hello World!")
+
+server &lt;- function(input, output, session) {
+  
+}
+
+shinyApp(ui, server)
+```
+
 ---
 class: middle, center, inverse
 
-## Vamos ao R!
+## To R!
 
 &lt;img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" width = "300" height = "300"&gt;
     </textarea>
