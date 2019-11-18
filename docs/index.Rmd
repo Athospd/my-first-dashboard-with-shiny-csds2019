@@ -1,6 +1,6 @@
 ---
 title: "My First Dashboard With Shiny"
-subtitle: "[bit.ly/my-1st-shiny](bit.ly/my-1st-shiny)"
+subtitle: "[bit.ly/my-1st-shiny](bit.ly/my-1st-shiny) <br/> [bit.ly/my-1st-shiny-slides](bit.ly/my-1st-shiny-slides)"
 author: "<img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>"
 date: "`r Sys.Date()`"
 output:
@@ -569,7 +569,38 @@ tibble::tribble(~`R function`, ~`HTML`,
         "strong()", "bold text") %>% knitr::kable(format = "html")
 ```
 
+---
 
+## Grid System
+
+Two main layout functions
+
+```{r, echo=TRUE, eval = FALSE}
+fluidRow()
+```
+```{r, echo=FALSE, eval = TRUE}
+cat(as.character(fluidRow()))
+```
+
+```{r, echo=TRUE, eval = FALSE}
+column(2)
+```
+```{r, echo=FALSE, eval = TRUE}
+cat(as.character(column(2)))
+```
+
+---
+
+## Grid System
+
+<img src="img/gridsystem.jpg">
+
+- Each row is a **`fluidRow()`**.
+- **`columns`** are divided up to 12 parts. The **`width`** determines how many parts wide are the column.
+
+.footnote[
+source: [dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating](https://dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating)
+]
 
 ---
 
@@ -580,10 +611,16 @@ class: middle, center, inverse
 
 ---
 
+## Reference
+
+This course is based on [Garrett Grolemund's Shiny Tutorial](https://shiny.rstudio.com/tutorial/).
+
+---
+
 class: middle, center, inverse
 
 # Thank you!
 
-## curso-r.com
+<img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>
 
 ## athos.damiani@curso-r.com
