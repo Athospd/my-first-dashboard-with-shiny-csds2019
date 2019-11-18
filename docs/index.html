@@ -586,6 +586,8 @@ class: middle, center, inverse
 
 # Layouts
 
+## [shiny.rstudio.com/layout-guide](https://shiny.rstudio.com/articles/layout-guide.html)
+
 ---
 
 ## But first... HTML Tags
@@ -732,6 +734,145 @@ column(2)
 .footnote[
 source: [dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating](https://dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating)
 ]
+
+--
+
+Grid System comes from Twitter's Open-source [Bootstrap Framework](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/).
+
+---
+
+## tabPanels and tabsetPanels
+
+---
+
+## fluidPage
+
+---
+
+## pageWithSidebar
+
+
+```r
+pageWithSidebar(
+  headerPanel = headerPanel("Hello Shiny!"),
+
+  sidebarPanel(
+    sliderInput("n", "Sample size:", min= 0, max=150, value=50)
+  ),
+  
+  mainPanel(
+    plotOutput("iris_plot")
+  )
+)
+```
+
+&lt;img src = "img/sidebarpage.png"&gt;
+
+---
+
+## navbarPage
+
+
+
+```r
+navbarPage(title = "My Navbar Page",
+  tabPanel("a"),
+  tabPanel("b"),
+  tabPanel("c"),
+  tabPanel("d")
+)
+```
+
+output:
+
+&lt;img src = "img/navbarpage.png"&gt;
+
+
+---
+
+## shinydashboard
+
+&lt;img src="img/dashexample.png"&gt;
+
+
+.footnote[
+source: [db.rstudio.com/dashboards/](https://db.rstudio.com/best-practices/dashboards/)
+]
+---
+
+## shinydashboard
+
+### The template
+
+.pull-left[
+
+
+```r
+dashboardPage(
+  dashboardHeader(),
+  dashboardSidebar(),
+  dashboardBody()
+)
+
+#server...
+```
+
+]
+
+.pull-right[
+
+&lt;img src="img/shinydashboard.png"&gt;
+
+]
+
+---
+
+## shinydashboard
+
+### dashboardHeader 
+
+
+---
+
+## shinydashboard
+
+### box 
+
+---
+
+## shinydashboard
+
+### sidebarMenu and menuItem 
+
+---
+
+## shinydashboard
+
+### dashboardBody and tabItems 
+
+
+---
+
+## shinydashboard
+
+### valueBox 
+
+---
+
+## Exercise 1
+
+Replicate the "Calculator" page of [this dashboard (click me!)](https://rseis.shinyapps.io/my-first-dashboard-with-shiny-csds2019/).
+
+&lt;img src="img/dashtutorial.png"&gt;
+
+---
+
+## Exercise 2 (hard!)
+
+Replicate the "Descriptive" page of [this dashboard (click me!)](https://rseis.shinyapps.io/my-first-dashboard-with-shiny-csds2019/).
+
+&lt;img src="img/dashtutorial2.png"&gt;
+
 
 ---
 
