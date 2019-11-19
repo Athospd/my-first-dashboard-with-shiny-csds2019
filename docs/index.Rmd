@@ -1,6 +1,6 @@
 ---
 title: "My First Dashboard With Shiny"
-subtitle: "[bit.ly/my-1st-shiny](bit.ly/my-1st-shiny) <br/> [bit.ly/my-1st-shiny-slides](bit.ly/my-1st-shiny-slides)"
+subtitle: "[bit.ly/my-1st-shiny](http://bit.ly/my-1st-shiny) <br/> [bit.ly/my-1st-shiny-slides](http://bit.ly/my-1st-shiny-slides)"
 author: "<img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>"
 date: "`r Sys.Date()`"
 output:
@@ -31,7 +31,7 @@ class: middle
 
 ### - Previous programming experience with R
 
-### - Files [bit.ly/my-1st-shiny](bit.ly/my-1st-shiny)
+### - Files [bit.ly/my-1st-shiny](http://bit.ly/my-1st-shiny)
 
 ---
 class: middle, center
