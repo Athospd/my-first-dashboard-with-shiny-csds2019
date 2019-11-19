@@ -803,7 +803,7 @@ source: [db.rstudio.com/dashboards/](https://db.rstudio.com/best-practices/dashb
 ]
 ---
 
-## shinydashboard
+## shinydashboard Layout
 
 ### The template
 
@@ -811,7 +811,7 @@ source: [db.rstudio.com/dashboards/](https://db.rstudio.com/best-practices/dashb
 
 
 ```r
-dashboardPage(
+ui &lt;- dashboardPage(
   dashboardHeader(),
   dashboardSidebar(),
   dashboardBody()
@@ -830,35 +830,123 @@ dashboardPage(
 
 ---
 
-## shinydashboard
+## shinydashboard Layout
+
+.pull-left[
+
+### box 
+
+
+```r
+box(
+  title = "Histogram", ...
+),
+box(
+  title = "Inputs", ...
+)
+```
+
+&lt;img src="img/box.png"&gt;
+
+]
+
+.pull-right[
+
+### tabBox 
+
+
+```r
+tabBox(
+  title = "Densities",
+  tabPanel("Sepal.Length",..),
+  tabPanel("Sepal.Width",...),
+  tabPanel("Petal.Length",..),
+  tabPanel("Petal.Width",...)
+)
+```
+
+
+&lt;img src="img/tabbox.png"&gt;
+
+]
+
+---
+
+## shinydashboard Layout
+
+
+.pull-left[
+
+### valueBox
+
+&lt;img src="img/valuebox.png"&gt;
+
+**`renderValueBox({}) + valueBoxOutput()`**
+
+]
+
+.pull-right[
+
+
+### infoBox
+
+&lt;img src="img/infobox.png"&gt;
+
+**`renderInfoBox({}) + infoBoxOutput()`**
+
+]
+
+
+---
+
+## shinydashboard Layout
 
 ### dashboardHeader 
 
 
----
 
-## shinydashboard
+```r
+dashboardPage(
+* dashboardHeader(title = "Iris Predictor"),
+  
+  dashboardSidebar(...),
+  dashboardBody(...)
+)
 
-### box 
+#server...
+```
 
----
+&lt;img src="img/dashboardHeader.png"&gt;
 
-## shinydashboard
-
-### sidebarMenu and menuItem 
-
----
-
-## shinydashboard
-
-### dashboardBody and tabItems 
 
 
 ---
 
-## shinydashboard
+## shinydashboard Layout
 
-### valueBox 
+#### dashboardSidebar + sidebarMenu + menuItem 
+
+
+```r
+dashboardSidebar(
+    sidebarMenu(
+      menuItem("Calculator", tabName = "calc"),
+      menuItem("Descriptive", tabName = "desc")
+    )
+  )
+```
+
+#### dashboardBody + tabItems + tabItem
+
+
+```r
+dashboardBody(
+    tabItems(
+      tabItem(tabName = "calc",...),
+      tabItem(tabName = "desc",...)
+    )
+)
+```
 
 ---
 
