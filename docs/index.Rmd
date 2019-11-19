@@ -55,7 +55,7 @@ class: middle
 ### 3. Layouts (shinydashboard)
 
 ### 4. Deploy with Shinyapps.io (if we got time!)
- 
+
 <img src="img/hex-shiny.png" style="position: fixed; top: 250px; right: 75px; z-index: 1;" width="15%">
 
 ---
@@ -81,7 +81,7 @@ class: middle, center
 ### Motivation:
 
 ### [Shiny Gallery](https://shiny.rstudio.com/gallery/)
- 
+
 ### [Show me Shiny Website](https://www.showmeshiny.com/)
 
 ---
@@ -138,14 +138,14 @@ source: [rstudio.com/shiny/](http://www.rstudio.com/shiny/)
 
 ```{r, echo = FALSE, eval=TRUE}
 tibble::tribble(~Function, ~Output,
-        "imageOutput()", "image",
-        "plotOutput()", "plot",
-        "tableOutput()", "table",
-        "textOutput()", "text",
-        "verbatimOutput()", "text",
-        "htmlOutput()", "raw HTML",
-        "dataTableOutput()", "interactive table",
-        "uiOutput()", "a Shiny UI element") %>% knitr::kable(format = "html")
+                "imageOutput()", "image",
+                "plotOutput()", "plot",
+                "tableOutput()", "table",
+                "textOutput()", "text",
+                "verbatimOutput()", "text",
+                "htmlOutput()", "raw HTML",
+                "dataTableOutput()", "interactive table",
+                "uiOutput()", "a Shiny UI element") %>% knitr::kable(format = "html")
 ```
 
 
@@ -157,7 +157,7 @@ tibble::tribble(~Function, ~Output,
 
 2) insert a plot output.
 
-3) insert a text input. (exercise!)
+3) insert a text input with `inputId = "title"`. (exercise!)
 
 ---
 
@@ -172,7 +172,7 @@ server <- function(input, output, session) {
   
   
   
-
+  
 }
 ```
 
@@ -187,7 +187,7 @@ server <- function(input, output, session) {
   output$hist <- renderPlot({
     hist(rnorm(100))    
   })
-
+  
 }
 ```
 
@@ -216,14 +216,14 @@ ui <- fluidPage(
 
 ```{r, echo = FALSE, eval=TRUE}
 tibble::tribble(~`*output()`, ~`render*()`,
-        "imageOutput()", "renderImage()",
-        "plotOutput()", "renderPlot()",
-        "tableOutput()", "renderTable()",
-        "textOutput()", "renderText()",
-        "verbatimOutput()", "renderText()",
-        "htmlOutput()", "renderUI()",
-        "dataTableOutput()", "renderDataTable()",
-        "uiOutput()", "renderUI()") %>% knitr::kable(format = "html")
+                "imageOutput()", "renderImage()",
+                "plotOutput()", "renderPlot()",
+                "tableOutput()", "renderTable()",
+                "textOutput()", "renderText()",
+                "verbatimOutput()", "renderText()",
+                "htmlOutput()", "renderUI()",
+                "dataTableOutput()", "renderDataTable()",
+                "uiOutput()", "renderUI()") %>% knitr::kable(format = "html")
 ```
 
 
@@ -312,15 +312,9 @@ output$hist <- renderPrint({
 
 ## Back to our "hello world" example...
 
-1) lets use `renderPlot({})` inside sever to display a plot into `"hist"` slot.
-
-
-2) after that, lets make `rnorm()` depending on `input$num` instead of `100`.
-
-
 3) then, lets make the title of the histogram depending on the text input that you created before. (exercise!)
 
-4) finally, create an **`verbatimTextOuput("summary")`** and feed it with **`summary(rnorm(input$num))`** using **`renderText()`**. (exercise!)
+4) finally, create an **`verbatimTextOutput("summary")`** on ui and feed it with **`summary(rnorm(input$num))`** using **`renderPrint({})`** on server. (exercise!)
 
 ---
 
@@ -425,7 +419,7 @@ Turn an **reactive value** into a **non-reactive value**.
 ```{r, echo = TRUE, eval=FALSE}
 # server
 output$hist <- renderPlot({
-* title <- isolate(input$title)
+  * title <- isolate(input$title)
   hist(data(), main = title)
 })
 ```
@@ -454,9 +448,9 @@ observeEvent(input$write_data, {
 })
 ```
 
-PS: action button is just another type of input! Useful along **`observeEvent()`**. See [Using Action Button](https://shiny.rstudio.com/articles/action-buttons.html) from Shiny docs.
+PS: action button is just another type of input! Useful along with **`observeEvent()`**. See [Using Action Button](https://shiny.rstudio.com/articles/action-buttons.html) from Shiny docs.
 
-To R...
+Exercise: put the 'write data' functionality into 'hello world' example.
 
 ---
 
@@ -498,7 +492,8 @@ data <- eventReactive(input$update, {
 ```
 
 
-To R...
+Exercise: put it into 'hello world' example.
+
 
 ---
 
@@ -560,16 +555,33 @@ The most commonly used tags are:
 
 ```{r, echo = FALSE, eval=TRUE}
 tibble::tribble(~`R function`, ~`HTML`,
-        "a()", "a hyperlink",
-        "hr()", "horizontal line",
-        "br()", "line break",
-        "code()", "monospaced code styled text",
-        "h1(), ..., h6()", "headers",
-        "img()", "image",
-        "p()", "paragraph",
-        "em()", "italic text",
-        "strong()", "bold text") %>% knitr::kable(format = "html")
+                "a()", "a hyperlink",
+                "hr()", "horizontal line",
+                "br()", "line break",
+                "code()", "monospaced code styled text",
+                "h1(), ..., h6()", "headers",
+                "img()", "image",
+                "p()", "paragraph",
+                "em()", "italic text",
+                "strong()", "bold text") %>% knitr::kable(format = "html")
 ```
+
+---
+
+## Grid System
+
+<img src="img/gridsystem.jpg">
+
+- Each row is a **`fluidRow()`**.
+- **`columns`** are divided up to 12 parts. The **`width`** determines how many parts wide are the column.
+
+.footnote[
+source: [dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating](https://dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating)
+]
+
+--
+
+Grid System comes from Twitter's Open-source [Bootstrap Framework](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/).
 
 ---
 
@@ -593,37 +605,27 @@ cat(as.character(column(2)))
 
 ---
 
-## Grid System
-
-<img src="img/gridsystem.jpg">
-
-- Each row is a **`fluidRow()`**.
-- **`columns`** are divided up to 12 parts. The **`width`** determines how many parts wide are the column.
-
-.footnote[
-source: [dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating](https://dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating)
-]
-
---
-
-Grid System comes from Twitter's Open-source [Bootstrap Framework](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/).
-
----
-
 ## tabPanels and tabsetPanels
 
+```{r, echo = TRUE,eval=FALSE}
+# ui
+tabsetPanel(
+  tabPanel("Plot", plotOutput("plot")), 
+  tabPanel("Summary", verbatimTextOutput("summary")), 
+  tabPanel("Table", tableOutput("table"))
+)
+```
+
+<img src="img/tabsetpanel.png">
+
 ---
 
-## fluidPage
-
----
-
-## pageWithSidebar
+## pageWithSidebar Layout
 
 ```{r, echo = TRUE, eval = FALSE}
 pageWithSidebar(
   headerPanel = headerPanel("Hello Shiny!"),
-
+  
   sidebarPanel(
     sliderInput("n", "Sample size:", min= 0, max=150, value=50)
   ),
@@ -638,15 +640,15 @@ pageWithSidebar(
 
 ---
 
-## navbarPage
+## navbarPage Layout
 
 
 ```{r, echo=TRUE,eval=FALSE}
 navbarPage(title = "My Navbar Page",
-  tabPanel("a"),
-  tabPanel("b"),
-  tabPanel("c"),
-  tabPanel("d")
+           tabPanel("a"),
+           tabPanel("b"),
+           tabPanel("c"),
+           tabPanel("d")
 )
 ```
 
@@ -657,7 +659,7 @@ output:
 
 ---
 
-## shinydashboard
+## shinydashboard Layout
 
 <img src="img/dashexample.png">
 

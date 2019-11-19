@@ -4,7 +4,7 @@
     <title>My First Dashboard With Shiny</title>
     <meta charset="utf-8" />
     <meta name="author" content="" />
-    <meta name="date" content="2019-11-18" />
+    <meta name="date" content="2019-11-19" />
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
     <link rel="stylesheet" href="css\custom-shiny.css" type="text/css" />
@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # My First Dashboard With Shiny
 ## <a href="bit.ly/my-1st-shiny">bit.ly/my-1st-shiny</a> <br/> <a href="bit.ly/my-1st-shiny-slides">bit.ly/my-1st-shiny-slides</a>
 ### <img src = 'https://d33wubrfki0l68.cloudfront.net/9b0699f18268059bdd2e5c21538a29eade7cbd2b/67e5c/img/logo/cursor1-5.png' width = '20%'>
-### 2019-11-18
+### 2019-11-19
 
 ---
 
@@ -57,7 +57,7 @@ class: middle
 ### 3. Layouts (shinydashboard)
 
 ### 4. Deploy with Shinyapps.io (if we got time!)
- 
+
 &lt;img src="img/hex-shiny.png" style="position: fixed; top: 250px; right: 75px; z-index: 1;" width="15%"&gt;
 
 ---
@@ -83,7 +83,7 @@ class: middle, center
 ### Motivation:
 
 ### [Shiny Gallery](https://shiny.rstudio.com/gallery/)
- 
+
 ### [Show me Shiny Website](https://www.showmeshiny.com/)
 
 ---
@@ -192,7 +192,7 @@ source: [rstudio.com/shiny/](http://www.rstudio.com/shiny/)
 
 2) insert a plot output.
 
-3) insert a text input. (exercise!)
+3) insert a text input with `inputId = "title"`. (exercise!)
 
 ---
 
@@ -207,7 +207,7 @@ server &lt;- function(input, output, session) {
   
   
   
-
+  
 }
 ```
 
@@ -222,7 +222,7 @@ server &lt;- function(input, output, session) {
   output$hist &lt;- renderPlot({
     hist(rnorm(100))    
   })
-
+  
 }
 ```
 
@@ -382,15 +382,9 @@ output$hist &lt;- renderPrint({
 
 ## Back to our "hello world" example...
 
-1) lets use `renderPlot({})` inside sever to display a plot into `"hist"` slot.
-
-
-2) after that, lets make `rnorm()` depending on `input$num` instead of `100`.
-
-
 3) then, lets make the title of the histogram depending on the text input that you created before. (exercise!)
 
-4) finally, create an **`verbatimTextOuput("summary")`** and feed it with **`summary(rnorm(input$num))`** using **`renderText()`**. (exercise!)
+4) finally, create an **`verbatimTextOutput("summary")`** on ui and feed it with **`summary(rnorm(input$num))`** using **`renderPrint({})`** on server. (exercise!)
 
 ---
 
@@ -500,7 +494,7 @@ Turn an **reactive value** into a **non-reactive value**.
 ```r
 # server
 output$hist &lt;- renderPlot({
-* title &lt;- isolate(input$title)
+  * title &lt;- isolate(input$title)
   hist(data(), main = title)
 })
 ```
@@ -531,9 +525,9 @@ observeEvent(input$write_data, {
 })
 ```
 
-PS: action button is just another type of input! Useful along **`observeEvent()`**. See [Using Action Button](https://shiny.rstudio.com/articles/action-buttons.html) from Shiny docs.
+PS: action button is just another type of input! Useful along with **`observeEvent()`**. See [Using Action Button](https://shiny.rstudio.com/articles/action-buttons.html) from Shiny docs.
 
-To R...
+Exercise: put the 'write data' functionality into 'hello world' example.
 
 ---
 
@@ -578,7 +572,8 @@ data &lt;- eventReactive(input$update, {
 ```
 
 
-To R...
+Exercise: put it into 'hello world' example.
+
 
 ---
 
@@ -702,6 +697,23 @@ The most commonly used tags are:
 
 ## Grid System
 
+&lt;img src="img/gridsystem.jpg"&gt;
+
+- Each row is a **`fluidRow()`**.
+- **`columns`** are divided up to 12 parts. The **`width`** determines how many parts wide are the column.
+
+.footnote[
+source: [dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating](https://dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating)
+]
+
+--
+
+Grid System comes from Twitter's Open-source [Bootstrap Framework](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/).
+
+---
+
+## Grid System
+
 Two main layout functions
 
 
@@ -724,38 +736,29 @@ column(2)
 
 ---
 
-## Grid System
-
-&lt;img src="img/gridsystem.jpg"&gt;
-
-- Each row is a **`fluidRow()`**.
-- **`columns`** are divided up to 12 parts. The **`width`** determines how many parts wide are the column.
-
-.footnote[
-source: [dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating](https://dzone.com/articles/working-with-bootstrap-4-grid-system-for-creating)
-]
-
---
-
-Grid System comes from Twitter's Open-source [Bootstrap Framework](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/).
-
----
-
 ## tabPanels and tabsetPanels
 
+
+```r
+# ui
+tabsetPanel(
+  tabPanel("Plot", plotOutput("plot")), 
+  tabPanel("Summary", verbatimTextOutput("summary")), 
+  tabPanel("Table", tableOutput("table"))
+)
+```
+
+&lt;img src="img/tabsetpanel.png"&gt;
+
 ---
 
-## fluidPage
-
----
-
-## pageWithSidebar
+## pageWithSidebar Layout
 
 
 ```r
 pageWithSidebar(
   headerPanel = headerPanel("Hello Shiny!"),
-
+  
   sidebarPanel(
     sliderInput("n", "Sample size:", min= 0, max=150, value=50)
   ),
@@ -770,16 +773,16 @@ pageWithSidebar(
 
 ---
 
-## navbarPage
+## navbarPage Layout
 
 
 
 ```r
 navbarPage(title = "My Navbar Page",
-  tabPanel("a"),
-  tabPanel("b"),
-  tabPanel("c"),
-  tabPanel("d")
+           tabPanel("a"),
+           tabPanel("b"),
+           tabPanel("c"),
+           tabPanel("d")
 )
 ```
 
@@ -790,7 +793,7 @@ output:
 
 ---
 
-## shinydashboard
+## shinydashboard Layout
 
 &lt;img src="img/dashexample.png"&gt;
 
